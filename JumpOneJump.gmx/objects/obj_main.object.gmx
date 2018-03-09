@@ -28,13 +28,16 @@
             <string>///state machine init
 enum mainCharState{
     stand,
-    air
+    air,
+    wait
 }
 currentState = mainCharState.air;
 
 ///setting Variables
-speedY = 5;
-speedX = 5;
+speedY = 0;
+maxSpeedY = 15;
+speedX = 0;
+maxSpeedX = 15;
 mainCharGravity = 0.7;
 </string>
           </argument>
@@ -62,7 +65,8 @@ mainCharGravity = 0.7;
 if(currentState == mainCharState.stand){
     //检测按钮增加向上初速度数值
     if(keyboard_check(vk_space)){
-        speedY = 15;//speedY+0.7;
+        speedY = getSmaller(speedY+0.7,maxSpeedY);
+        speedX = getSmaller(speedX+0.7,maxSpeedX);
     }
     //松开按钮实现跳跃
     if(keyboard_check_released(vk_space)){
@@ -71,6 +75,7 @@ if(currentState == mainCharState.stand){
         hspeed = - speedX;
         //已经起跳，蓄力置零
         speedY = 0;
+        speedX = 0;
         currentState = mainCharState.air;
     }
 }
@@ -109,7 +114,7 @@ if(currentState == mainCharState.air){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 608;
+            <string>x = 1216;
 y = 224;
 currentState = mainCharState.air;
 </string>

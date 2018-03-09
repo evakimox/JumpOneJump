@@ -11,6 +11,9 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\getSmaller.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_floorPlain</object>
     <object>objects\obj_main</object>
